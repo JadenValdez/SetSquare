@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://lqw7tdq27ixc"]
+[gd_scene load_steps=2 format=3 uid="uid://lqw7tdq27ixc"]
+
+[ext_resource type="PackedScene" uid="uid://cqnbnytconhe0" path="res://Scenes/BoardCreator.tscn" id="1_ottl6"]
 
 [node name="SetSquare" type="Node2D"]
+
+[node name="BoardCreator" parent="." instance=ExtResource("1_ottl6")]
