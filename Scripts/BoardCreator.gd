@@ -18,52 +18,95 @@ const FILL: Dictionary = {
 	2: "Empty"
 }
 
-var tile_list: Dictionary
-var large_tile_list: Dictionary
+const LEVELS: Dictionary = {
+	1: {
+		"Rows": 2,
+		"Columns": 3,
+		"List": "Normal",
+		"Answers": [0, 1, 1, 2, 2]
+	},
+	
+	2: {
+		"Rows": 3,
+		"Columns": 3,
+		"List": "Normal",
+		"Answers": [1, 1, 2, 2, 3]
+	},
+	
+	3: {
+		"Rows": 3,
+		"Columns": 4,
+		"List": "Normal",
+		"Answers": [2, 2, 3, 4, 5]
+	},
+	
+	4: {
+		"Rows": 3,
+		"Columns": 4,
+		"List": "Large",
+		"Answers": [3, 3, 4, 5, 6]
+	},
+	
+	5: {
+		"Rows": 4,
+		"Columns": 4,
+		"List": "Large",
+		"Answers": [4, 5, 6, 8, 10]
+	},
+		
+}
+
+var tile_list: Array
+var large_tile_list: Array
 #maybe an "extra" list with 5?
 
 var size: int
-var chosen_tiles: Dictionary
+var current_answer_amount: int
+var chosen_tiles: Array
 var answer_tile: String
 var answers: Dictionary
 var index: String
+var total_spaces: int
+var current_space: int
 
 func _ready() -> void:
 	create_tile_lists()
 	create_board(2, 3)
 
 func create_tile_lists() -> void:
-	tile_list = {}
-	large_tile_list = {}
+	tile_list = []
+	large_tile_list = []
 	for i in range(3):
 		for j in range(3):
 			for k in range(3):
 				
-				tile_list[str(i) + str(j) + str(k)] = {
-					"Color": COLORS[i],
-					"Shape": SHAPES[j],
-					"Amount": k+1
-					}
+				tile_list.append(str(i) + str(j) + str(k)) 
 					
 				for l in FILL:
-					large_tile_list[str(i) + str(j) + str(l) + str(k)] = {
-						"Color": COLORS[i],
-						"Shape": SHAPES[j],
-						"Fill": FILL[l],
-						"Amount": k+1
-					}
+					large_tile_list.append(str(i) + str(j) + str(l) + str(k)) 
 
 func create_board(rows: int, columns: int) -> void:
-	chosen_tiles = {}
+	chosen_tiles = []
 	answers = {}
+	total_spaces = rows * columns
+	current_answer_amount = 0
+	current_space = 0
 	for i in range(rows):
 		for j in range(columns):
+			if total_spaces - current_space <= current_answer_amount:
+				break
+				pass
+			current_space += 1
 			size = tile_list.size()
-			index = tile_list.keys()[randi() % size]
-			get_answers(tile_list[index])
+			index = tile_list[randi() % size]
+			get_answers(index)
+			
+	print(chosen_tiles)
+	print(answers)
 
 func get_answers(new_tile: String) -> void:
-	for x in chosen_tiles.keys():
+	for x in chosen_tiles:
+		
 		answer_tile = ""
 		
 		#use range 4 for larger list
@@ -83,9 +126,12 @@ func get_answers(new_tile: String) -> void:
 					_:
 						answer_tile += "0"
 					
-	tile_list.erase(answer_tile)
+		tile_list.erase(answer_tile)
 	
-	if !chosen_tiles.has(answer_tile):
-		chosen_tiles[answer_tile] = 1
-	else:
-		chosen_tiles[answer_tile] += 1
+		if !answers.has(answer_tile):
+			answers[answer_tile] = 1
+		else:
+			answers[answer_tile] += 1
+	
+	chosen_tiles.append(new_tile)
+	tile_list.erase(new_tile)
