@@ -61,18 +61,19 @@ var large_tile_list: Array
 #maybe an "extra" list with 5?
 
 var size: int
-var current_answer_amount: int
+
 var chosen_tiles: Array
 var answer_tile: String
 var answers: Dictionary
-var index: String
+
 var total_spaces: int
 var current_space: int
 
 func _ready() -> void:
 	create_tile_lists()
-	create_board(2, 3)
+	create_board(3, 3, 2)
 
+#creates a list of ids that correspond to each tile of the entire tile list
 func create_tile_lists() -> void:
 	tile_list = []
 	large_tile_list = []
@@ -82,28 +83,38 @@ func create_tile_lists() -> void:
 				
 				tile_list.append(str(i) + str(j) + str(k)) 
 					
-				for l in FILL:
+				for l in range(3):
 					large_tile_list.append(str(i) + str(j) + str(l) + str(k)) 
 
-func create_board(rows: int, columns: int) -> void:
+#creates a board of the given size
+func create_board(rows: int, columns: int, current_answer_amount: int) -> void:
 	chosen_tiles = []
 	answers = {}
 	total_spaces = rows * columns
-	current_answer_amount = 0
 	current_space = 0
 	for i in range(rows):
 		for j in range(columns):
-			if total_spaces - current_space <= current_answer_amount:
-				break
-				pass
+			#start looking for answers once enough spaces have been filled out
+			if total_spaces - current_space <= current_answer_amount && current_answer_amount != 0:
+				for x in answers.keys():
+					if answers[x] > current_answer_amount:
+						pass
+					else:
+						current_answer_amount -= answers[x]
+						answers.erase(x)
+						get_answers(x)
+						break
+						
+			else: 
+				size = tile_list.size()
+				get_answers(tile_list[randi() % size])
+				
 			current_space += 1
-			size = tile_list.size()
-			index = tile_list[randi() % size]
-			get_answers(index)
 			
 	print(chosen_tiles)
-	print(answers)
+	SignalBus.create_board(chosen_tiles)
 
+#get the answer tiles based on the list of currrently chosen tiles
 func get_answers(new_tile: String) -> void:
 	for x in chosen_tiles:
 		
