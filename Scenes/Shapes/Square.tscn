@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://by42e6p1ydfj6"]
+
+[node name="Square" type="Node2D"]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+closed = true
+width = 2.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
