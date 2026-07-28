@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqnbnytconhe0"]
+[gd_scene load_steps=2 format=3 uid="uid://dlsj4tnsksrx"]
 
-[ext_resource type="Script" path="res://Scripts/BoardCreator.gd" id="1_wkc2y"]
+[sub_resource type="GDScript" id="GDScript_cmba3"]
 
 [node name="BoardCreator" type="Node2D"]
-script = ExtResource("1_wkc2y")
+script = SubResource("GDScript_cmba3")

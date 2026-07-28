@@ -1,11 +1,12 @@
 extends Node
 
-var CurrentLevel: int
-var CurrentRound: int
+var CurrentLevel: int = 0
+var CurrentRound: int = 0
 
 var BoardRows: int
 var BoardColumns: int
 var List: String
+
 var AnswerAmount: int
 
 const LEVELS: Dictionary = {
@@ -45,3 +46,23 @@ const LEVELS: Dictionary = {
 	},
 		
 }
+
+var TileList: Array
+var LargeTileList: Array
+#maybe an "extra" list with 5?
+
+func _ready() -> void:
+	CreateTileLists()
+	
+#creates a list of ids that correspond to each tile of the entire tile list
+func CreateTileLists() -> void:
+	TileList = []
+	LargeTileList = []
+	for i in range(3):
+		for j in range(3):
+			for k in range(3):
+				
+				TileList.append(str(i) + str(j) + str(k)) 
+					
+				for l in range(3):
+					LargeTileList.append(str(i) + str(j) + str(l) + str(k)) 

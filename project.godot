@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://Scripts/SignalBus.gd"
 GameManager="*res://Scripts/GameManager.gd"
+LevelManager="*res://Scripts/LevelManager.gd"
+TileGenerator="*res://Scripts/TileGenerator.gd"
 
 [debug]
 
