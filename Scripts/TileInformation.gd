@@ -1,15 +1,15 @@
 extends Node
 
-const COLORS: Dictionary = {
-	0: "Red",
-	1: "Yellow",
-	2: "Blue"
-}
-
 const SHAPES: Dictionary = {
 	0: "Circle",
 	1: "Square",
 	2: "Triangle"
+}
+
+const COLORS: Dictionary = {
+	0: Color(1, 0, 0, 1), #red
+	1: Color(1, 1, 0, 1), #yellow
+	2: Color(0, 0, 1, 1) #blue
 }
 
 const FILL: Dictionary = {

@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://by42e6p1ydfj6"]
+[gd_scene load_steps=2 format=3 uid="uid://by42e6p1ydfj6"]
+
+[ext_resource type="Script" path="res://Scripts/Shape.gd" id="1_7stpl"]
 
 [node name="Square" type="Node2D"]
+script = ExtResource("1_7stpl")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)

@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://xllyj2rnrw3a"]
+[gd_scene load_steps=2 format=3 uid="uid://xllyj2rnrw3a"]
+
+[ext_resource type="Script" path="res://Scripts/Shape.gd" id="1_r5sam"]
 
 [node name="Triangle" type="Node2D"]
+script = ExtResource("1_r5sam")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(-64, 64, 0, -64, 64, 64)

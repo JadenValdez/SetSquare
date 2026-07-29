@@ -21,6 +21,7 @@ SignalBus="*res://Scripts/SignalBus.gd"
 GameManager="*res://Scripts/GameManager.gd"
 LevelManager="*res://Scripts/LevelManager.gd"
 TileGenerator="*res://Scripts/TileGenerator.gd"
+TileInformation="*res://Scripts/TileInformation.gd"
 
 [debug]
 

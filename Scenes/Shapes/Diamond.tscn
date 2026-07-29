@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://btkech51826x8"]
+[gd_scene load_steps=2 format=3 uid="uid://btkech51826x8"]
+
+[ext_resource type="Script" path="res://Scripts/Shape.gd" id="1_pfvkg"]
 
 [node name="Diamond" type="Node2D"]
+script = ExtResource("1_pfvkg")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, -64, -64, 0, 0, 64, 64, 0)
@@ -8,4 +11,5 @@ closed = true
 width = 2.0
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+modulate = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(0, -64, -64, 0, 0, 64, 64, 0)
