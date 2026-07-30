@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://lqw7tdq27ixc"]
 
-[ext_resource type="Script" path="res://MainPlayArea.gd" id="2_71jd4"]
+[ext_resource type="Script" path="res://Scripts/MainPlayArea.gd" id="2_71jd4"]
 
 [node name="SetSquare" type="Node2D"]
 
 [node name="MainPlayArea" type="Node2D" parent="."]
+position = Vector2(576, 320)
 script = ExtResource("2_71jd4")

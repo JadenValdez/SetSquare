@@ -17,3 +17,11 @@ const FILL: Dictionary = {
 	1: "Shaded",
 	2: "Empty"
 }
+
+const SHADE: Dictionary = {
+	0: Color(0, 0, 0, 1), #black
+	1: Color(0.5, 0.5, 0.5, 1), #grey
+	2: Color(1, 1, 1, 1) #white
+}
+
+#possibly orange, green, and purple line color if 5th

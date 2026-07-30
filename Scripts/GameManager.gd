@@ -8,6 +8,7 @@ var BoardColumns: int
 var List: String
 
 var AnswerAmount: int
+var Sets: Array
 
 const LEVELS: Dictionary = {
 	1: {
