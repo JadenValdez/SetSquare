@@ -6,10 +6,11 @@
 script = ExtResource("1_pfvkg")
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(0, -64, -64, 0, 0, 64, 64, 0)
+position = Vector2(8, 0)
+scale = Vector2(0.863636, 1)
+points = PackedVector2Array(-9.26316, -48, -64.8421, 0, -9.26316, 48, 46.3158, 0)
 closed = true
 width = 2.0
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, -64, -64, 0, 0, 64, 64, 0)
+polygon = PackedVector2Array(0, -48, -48, 0, 0, 48, 48, 0)

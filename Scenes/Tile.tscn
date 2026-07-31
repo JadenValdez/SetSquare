@@ -6,8 +6,8 @@
 script = ExtResource("1_skjd0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -80.0
-offset_top = -80.0
-offset_right = 80.0
-offset_bottom = 80.0
+offset_left = -56.0
+offset_top = -56.0
+offset_right = 56.0
+offset_bottom = 56.0
 color = Color(0, 0, 0, 1)

@@ -17,9 +17,11 @@ func _ready() -> void:
 
 #creates a board of the given size
 func GenerateTiles() -> void:
+	print(4)
 	ChosenTiles = []
 	Answers = {}
 	Sets = []
+	#change tile list based on current list type
 	TileList = GameManager.TileList.duplicate(true)
 	TotalSpaces = GameManager.BoardRows * GameManager.BoardColumns
 	CurrentSpace = 0
@@ -28,12 +30,15 @@ func GenerateTiles() -> void:
 			#start looking for answers once enough spaces have been filled out
 			if TotalSpaces - CurrentSpace <= GameManager.AnswerAmount && GameManager.AnswerAmount != 0:
 				for x in Answers.keys():
-					if Answers[x] > GameManager.AnswerAmount:
+					if Answers[x].Amount > GameManager.AnswerAmount:
 						pass
 					else:
 						GameManager.AnswerAmount -= Answers[x].Amount
 						for pair in Answers[x].HalfSet:
-							Sets.append((pair.append(x)).sort())
+							for id in Answers[x].HalfSet[pair]:
+								Sets.append(id)
+							Sets.append(x)
+							
 						Answers.erase(x)
 						get_answers(x)
 						break

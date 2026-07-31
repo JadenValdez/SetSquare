@@ -8,10 +8,6 @@ var current_column: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.create_board.connect(_create_board)
-	
-	
-	await get_tree().create_timer(1).timeout
-	SignalBus.start_game.emit()
 
 func _create_board(chosen_tiles: Array) -> void:
 	chosen_tiles.shuffle()
@@ -30,5 +26,10 @@ func _create_board(chosen_tiles: Array) -> void:
 			instance.tile_shade = Color(0, 0, 0, 1)
 			
 		#change position and size based on how many rows/columns there are
-		
+		instance.scale = Vector2(4.0/GameManager.BoardColumns, 4.0/GameManager.BoardRows)
+		instance.position = Vector2(-256 + ((512.0/(GameManager.BoardColumns * 2)) * (current_column*2 + 1)), -256 + ((512.0/(GameManager.BoardRows * 2)) * (current_row * 2 + 1)))
 		add_child(instance)
+
+
+func _on_button_pressed() -> void:
+	SignalBus.start_game.emit()
