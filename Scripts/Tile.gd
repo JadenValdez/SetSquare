@@ -4,6 +4,7 @@ const DIAMOND = preload("res://Scenes/Shapes/Diamond.tscn")
 const SQUARE = preload("res://Scenes/Shapes/Square.tscn")
 const TRIANGLE = preload("res://Scenes/Shapes/Triangle.tscn")
 @onready var color_rect: ColorRect = $ColorRect
+@onready var line_2d: Line2D = $Line2D
 
 var tile_id: String
 var tile_shade: Color = Color(0, 0, 0, 1)
@@ -30,3 +31,25 @@ func _ready() -> void:
 	instance.fill = TileInformation.FILL[tile_id[2]]
 	
 	add_child(instance)
+
+
+func _on_control_gui_input(event: InputEvent) -> void:
+	if event.is_pressed():
+		
+		#if tile is already selected, unselect it
+		for x in PlayerInformation.SelectedTiles:
+			if x == tile_id:
+				line_2d.hide()
+				PlayerInformation.SelectedTiles.erase(tile_id)
+				PlayerInformation.SelectedTilesAmount -= 1
+				return
+				
+		#if the player already selected 3 tiles, do nothing
+		if PlayerInformation.SelectedTilesAmount >= 3:
+			pass
+			
+		#otherwise, add this tile to the selected tiles list
+		else:
+			line_2d.show()
+			PlayerInformation.SelectedTiles.append(tile_id)
+			PlayerInformation.SelectedTilesAmount += 1

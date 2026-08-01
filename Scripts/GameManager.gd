@@ -8,9 +8,10 @@ var BoardColumns: int
 var List: String
 
 var AnswerAmount: int
-var Sets: Array
+var Sets: Dictionary
 
 const LEVELS: Dictionary = {
+	#column amounts will always be equal, or 1 more than the amount of rows
 	1: {
 		"Rows": 2,
 		"Columns": 3,

@@ -26,9 +26,13 @@ func _create_board(chosen_tiles: Array) -> void:
 			instance.tile_shade = Color(0, 0, 0, 1)
 			
 		#change position and size based on how many rows/columns there are
-		instance.scale = Vector2(4.0/GameManager.BoardColumns, 4.0/GameManager.BoardRows)
-		instance.position = Vector2(-256 + ((512.0/(GameManager.BoardColumns * 2)) * (current_column*2 + 1)), -256 + ((512.0/(GameManager.BoardRows * 2)) * (current_row * 2 + 1)))
+		instance.scale = Vector2(4.0/GameManager.BoardColumns, 4.0/GameManager.BoardColumns)
+		if GameManager.BoardColumns == GameManager.BoardRows:
+			instance.position = Vector2(-256 + ((512.0/(GameManager.BoardColumns * 2)) * (current_column * 2 + 1)), -256 + ((512.0/(GameManager.BoardColumns * 2)) * (current_row * 2 + 1)))
+		else:
+			instance.position = Vector2(-256 + ((512.0/(GameManager.BoardColumns * 2)) * (current_column * 2 + 1)), -256 + ((512.0/(GameManager.BoardColumns * 2)) * (current_row * 2 + 2)))
 		add_child(instance)
+		current_column += 1
 
 
 func _on_button_pressed() -> void:

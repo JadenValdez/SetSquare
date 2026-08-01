@@ -6,7 +6,9 @@ var TileList: Array
 var ChosenTiles: Array
 var AnswerTile: String
 var Answers: Dictionary
-var Sets: Array
+var Sets: Dictionary
+var TempSet: Array
+var CurrentAnswer:int
 
 var TotalSpaces: int
 var CurrentSpace: int
@@ -17,10 +19,10 @@ func _ready() -> void:
 
 #creates a board of the given size
 func GenerateTiles() -> void:
-	print(4)
 	ChosenTiles = []
 	Answers = {}
-	Sets = []
+	Sets = {}
+	CurrentAnswer = 0
 	#change tile list based on current list type
 	TileList = GameManager.TileList.duplicate(true)
 	TotalSpaces = GameManager.BoardRows * GameManager.BoardColumns
@@ -34,10 +36,13 @@ func GenerateTiles() -> void:
 						pass
 					else:
 						GameManager.AnswerAmount -= Answers[x].Amount
-						for pair in Answers[x].HalfSet:
-							for id in Answers[x].HalfSet[pair]:
-								Sets.append(id)
-							Sets.append(x)
+						for pair_id in Answers[x].HalfSet:
+							TempSet = []
+							for id in Answers[x].HalfSet[pair_id]:
+								TempSet.append(id)
+							TempSet.append(x)
+							CurrentAnswer += 1
+							Sets[CurrentAnswer] = TempSet
 							
 						Answers.erase(x)
 						get_answers(x)
@@ -50,6 +55,7 @@ func GenerateTiles() -> void:
 			
 	print(ChosenTiles)
 	GameManager.Sets = Sets.duplicate(true)
+	print(GameManager.Sets)
 	SignalBus.create_board.emit(ChosenTiles.duplicate(true))
 
 #get the answer tiles based on the list of currrently chosen tiles
@@ -80,11 +86,13 @@ func get_answers(new_tile: String) -> void:
 		if !Answers.has(AnswerTile):
 			Answers[AnswerTile] = {
 				"Amount" = 1,
-				"HalfSet" = [[x, new_tile]]
+				"HalfSet" = {
+					1: [x, new_tile]
+				}
 			}
 		else:
 			Answers[AnswerTile].Amount += 1
-			Answers[AnswerTile].HalfSet.append([x, new_tile])
+			Answers[AnswerTile].HalfSet[Answers[AnswerTile].Amount] =[x, new_tile]
 	
 	ChosenTiles.append(new_tile)
 	TileList.erase(new_tile)
