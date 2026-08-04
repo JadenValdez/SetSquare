@@ -41,15 +41,9 @@ func _on_control_gui_input(event: InputEvent) -> void:
 			if x == tile_id:
 				line_2d.hide()
 				PlayerInformation.SelectedTiles.erase(tile_id)
-				PlayerInformation.SelectedTilesAmount -= 1
 				return
 				
-		#if the player already selected 3 tiles, do nothing
-		if PlayerInformation.SelectedTilesAmount >= 3:
-			pass
-			
-		#otherwise, add this tile to the selected tiles list
-		else:
-			line_2d.show()
-			PlayerInformation.SelectedTiles.append(tile_id)
-			PlayerInformation.SelectedTilesAmount += 1
+		line_2d.show()
+		PlayerInformation.SelectedTiles.append(tile_id)
+		if PlayerInformation.SelectedTiles.size() >= 3:
+			AnswerCheck.CheckAnswer()

@@ -14,4 +14,11 @@ offset_top = 24.0
 offset_right = 272.0
 offset_bottom = 88.0
 
+[node name="Button2" type="Button" parent="."]
+offset_left = 256.0
+offset_top = 552.0
+offset_right = 896.0
+offset_bottom = 616.0
+
 [connection signal="pressed" from="Button" to="MainPlayArea" method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="MainPlayArea" method="_on_button_2_pressed"]

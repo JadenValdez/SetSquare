@@ -37,3 +37,7 @@ func _create_board(chosen_tiles: Array) -> void:
 
 func _on_button_pressed() -> void:
 	SignalBus.start_game.emit()
+
+
+func _on_button_2_pressed() -> void:
+	AnswerCheck.CheckSets()

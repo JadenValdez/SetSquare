@@ -23,6 +23,7 @@ LevelManager="*res://Scripts/LevelManager.gd"
 TileGenerator="*res://Scripts/TileGenerator.gd"
 TileInformation="*res://Scripts/TileInformation.gd"
 PlayerInformation="*res://Scripts/PlayerInformation.gd"
+AnswerCheck="*res://Scripts/AnswerCheck.gd"
 
 [debug]
 
