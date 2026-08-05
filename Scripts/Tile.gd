@@ -9,6 +9,9 @@ const TRIANGLE = preload("res://Scenes/Shapes/Triangle.tscn")
 var tile_id: String
 var tile_shade: Color = Color(0, 0, 0, 1)
 
+var tile_row: int
+var tile_column: int
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	color_rect.modulate = tile_shade
@@ -44,6 +47,9 @@ func _on_control_gui_input(event: InputEvent) -> void:
 				return
 				
 		line_2d.show()
-		PlayerInformation.SelectedTiles.append(tile_id)
+		PlayerInformation.SelectedTiles[tile_id] = {
+			"Row": tile_row,
+			"Column": tile_column
+		}
 		if PlayerInformation.SelectedTiles.size() >= 3:
 			AnswerCheck.CheckAnswer()

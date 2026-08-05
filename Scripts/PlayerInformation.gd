@@ -1,6 +1,6 @@
 extends Node
 
-var SelectedTiles: Array
+var SelectedTiles: Dictionary
 var FoundSets: Dictionary
 
 var Score: int

@@ -17,6 +17,7 @@ func CheckAnswer() -> void:
 					tiles_found += 1
 					if tiles_found >= 3:
 						print("set already found")
+						PlayerInformation.SelectedTiles = {}
 						return
 						#duplicate set
 						#no score change
@@ -36,15 +37,21 @@ func CheckAnswer() -> void:
 						print("selected tiles form a set")
 						PlayerInformation.FoundSets[PlayerInformation.FoundSets.size()] = PlayerInformation.SelectedTiles.duplicate(true)
 						PlayerInformation.Score += 1
+						SignalBus.update_score.emit()
+						AnswerCreator.CreateAnswerTab()
+						PlayerInformation.SelectedTiles = {}
 						return
 	
 	print("selected tiles do not form a set")
 	PlayerInformation.Score -= 1
+	SignalBus.update_score.emit()
+	PlayerInformation.SelectedTiles = {}
 	#set was not found
 
 func CheckSets() -> void:
 	if PlayerInformation.FoundSets.size() >= GameManager.Sets.size():
 		PlayerInformation.Score += 2
+		SignalBus.update_score.emit()
 	else:
 		for set_id in GameManager.Sets:
 			

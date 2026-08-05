@@ -34,7 +34,8 @@ func StartNewRound() -> void:
 	GameManager.CurrentRound += 1
 	GameManager.AnswerAmount = RemainingLevelAnswers[randi() % RemainingLevelAnswers.size()]
 	RemainingLevelAnswers.erase(GameManager.AnswerAmount)
-	PlayerInformation.SelectedTiles = []
+	PlayerInformation.SelectedTiles = {}
 	PlayerInformation.FoundSets = {}
+	AnswerCreator.CurrentAnswerAmount = 0
 	TileGenerator.GenerateTiles()
 	
