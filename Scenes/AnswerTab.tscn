@@ -11,8 +11,3 @@ offset_top = -64.0
 offset_right = 64.0
 offset_bottom = 64.0
 color = Color(0, 0, 0, 1)
-
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-closed = true
-width = 2.0

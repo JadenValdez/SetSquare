@@ -10,7 +10,7 @@ position = Vector2(576, 320)
 script = ExtResource("2_71jd4")
 
 [node name="AnswerCreator" type="Node2D" parent="."]
-position = Vector2(576, 320)
+position = Vector2(576, 608)
 script = ExtResource("2_ts7kv")
 
 [node name="Button" type="Button" parent="."]
@@ -20,10 +20,10 @@ offset_right = 272.0
 offset_bottom = 88.0
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 256.0
-offset_top = 552.0
-offset_right = 896.0
-offset_bottom = 616.0
+offset_left = 872.0
+offset_top = 544.0
+offset_right = 1120.0
+offset_bottom = 624.0
 
 [node name="Label" type="Label" parent="."]
 offset_left = 912.0

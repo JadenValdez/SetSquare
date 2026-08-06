@@ -20,6 +20,8 @@ func StartNewLevel() -> void:
 	
 	
 func StartNewRound() -> void:
+	SignalBus.remove_answer_tabs.emit()
+	SignalBus.delete_all_tiles.emit()
 	if RemainingLevelAnswers.is_empty():
 		GameManager.CurrentLevel += 1
 		if GameManager.CurrentLevel >= 6:

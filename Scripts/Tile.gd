@@ -14,6 +14,9 @@ var tile_column: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SignalBus.clear_selected_tiles.connect(_clear_selected_tiles)
+	SignalBus.delete_all_tiles.connect(_delete_all_tiles)
+	
 	color_rect.modulate = tile_shade
 	
 	#shape
@@ -53,3 +56,10 @@ func _on_control_gui_input(event: InputEvent) -> void:
 		}
 		if PlayerInformation.SelectedTiles.size() >= 3:
 			AnswerCheck.CheckAnswer()
+			
+func _clear_selected_tiles() -> void:
+	line_2d.hide()
+	
+
+func delete_all_tiles() -> void:
+	queue_free()
