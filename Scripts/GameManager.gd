@@ -14,43 +14,71 @@ const LEVELS: Dictionary = {
 	#column amounts will always be equal, or 1 more than the amount of rows
 	1: {
 		"Rows": 2,
+		"Columns": 2,
+		"List": "Normal",
+		"Answers": [0, 0, 0, 1, 1]
+	},
+	
+	2: {
+		"Rows": 2,
 		"Columns": 3,
 		"List": "Normal",
 		"Answers": [0, 1, 1, 2, 2]
 	},
 	
-	2: {
+	3: {
 		"Rows": 3,
 		"Columns": 3,
 		"List": "Normal",
 		"Answers": [1, 1, 2, 2, 3]
 	},
 	
-	3: {
-		"Rows": 3,
-		"Columns": 4,
-		"List": "Normal",
-		"Answers": [2, 2, 3, 4, 5]
-	},
-	
 	4: {
-		"Rows": 3,
-		"Columns": 4,
+		"Rows": 2,
+		"Columns": 3,
 		"List": "Large",
-		"Answers": [3, 3, 4, 5, 6]
+		"Answers": [1, 1, 2, 2, 2]
 	},
 	
 	5: {
-		"Rows": 4,
-		"Columns": 4,
+		"Rows": 3,
+		"Columns": 3,
 		"List": "Large",
-		"Answers": [4, 5, 6, 8, 10]
+		"Answers": [1, 2, 2, 3, 3]
 	},
 		
+	6: {
+		"Rows": 3,
+		"Columns": 4,
+		"List": "Large",
+		"Answers": [2, 3, 4, 5, 6]
+	},
+	
+	7: {
+		"Rows": 2,
+		"Columns": 3,
+		"List": "Extra",
+		"Answers": [1, 2, 2, 2, 3]
+	},
+	
+	8: {
+		"Rows": 3,
+		"Columns": 3,
+		"List": "Extra",
+		"Answers": [2, 2, 3, 3, 4]
+	},
+	
+	9: {
+		"Rows": 3,
+		"Columns": 4,
+		"List": "Extra",
+		"Answers": [2, 4, 6, 8, 10]
+	},
 }
 
 var TileList: Array
 var LargeTileList: Array
+var ExtraTileList: Array
 #maybe an "extra" list with 5?
 
 func _ready() -> void:
@@ -67,4 +95,7 @@ func CreateTileLists() -> void:
 				TileList.append(str(i) + str(j) + str(k)) 
 					
 				for l in range(3):
-					LargeTileList.append(str(i) + str(j) + str(l) + str(k)) 
+					LargeTileList.append(str(i) + str(j) + str(k) + str(l)) 
+					
+					for m in range(3):
+						ExtraTileList.append(str(i) + str(j) + str(k) + str(l) + str(m)) 

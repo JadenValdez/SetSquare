@@ -31,7 +31,10 @@ func _ready() -> void:
 	
 	#color
 	instance.shape_color = TileInformation.COLORS[tile_id[1]]
-	instance.line_color = TileInformation.COLORS[tile_id[1]]
+	if tile_id.length() >= 5:
+		instance.line_color = TileInformation.LINECOLORS[tile_id[4]]
+	else:
+		instance.line_color = TileInformation.COLORS[tile_id[1]]
 	
 	#fill
 	instance.fill = TileInformation.FILL[tile_id[2]]
@@ -61,5 +64,5 @@ func _clear_selected_tiles() -> void:
 	line_2d.hide()
 	
 
-func delete_all_tiles() -> void:
+func _delete_all_tiles() -> void:
 	queue_free()

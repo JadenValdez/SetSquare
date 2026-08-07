@@ -16,9 +16,16 @@ func _create_board(chosen_tiles: Array) -> void:
 	current_row = 1
 	current_column = 1
 	for tile in chosen_tiles:
+
 		if current_column > GameManager.BoardColumns:
 			current_column = 1
 			current_row += 1
+			
+		for set_id in GameManager.Sets:
+			for tile_id in GameManager.Sets[set_id]:
+				GameManager.Sets[set_id][tile_id].Row = current_row
+				GameManager.Sets[set_id][tile_id].Column = current_column
+				
 		var instance = TILE.instantiate()
 		
 		instance.tile_id = tile

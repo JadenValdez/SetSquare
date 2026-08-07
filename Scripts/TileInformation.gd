@@ -24,4 +24,8 @@ const SHADE: Dictionary = {
 	"2": Color(1, 1, 1, 1) #white
 }
 
-#possibly orange, green, and purple line color if 5th
+const LINECOLORS: Dictionary = {
+	"0": Color(1, 0.5, 0, 1), #orange
+	"1": Color(0, 1, 0, 1), #green
+	"2": Color(0.5, 0, 1, 1) #purple
+}

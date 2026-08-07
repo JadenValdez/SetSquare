@@ -7,7 +7,7 @@ var ChosenTiles: Array
 var AnswerTile: String
 var Answers: Dictionary
 var Sets: Dictionary
-var TempSet: Array
+var TempSet: Dictionary
 var CurrentAnswer:int
 
 var TotalSpaces: int
@@ -24,7 +24,14 @@ func GenerateTiles() -> void:
 	Sets = {}
 	CurrentAnswer = 0
 	#change tile list based on current list type
-	TileList = GameManager.TileList.duplicate(true)
+	match GameManager.List:
+		"Normal":
+			TileList = GameManager.TileList.duplicate(true)
+		"Large": 
+			TileList = GameManager.LargeTileList.duplicate(true)
+		"Extra":
+			TileList = GameManager.ExtraTileList.duplicate(true)
+			
 	TotalSpaces = GameManager.BoardRows * GameManager.BoardColumns
 	CurrentSpace = 0
 	for i in range(GameManager.BoardRows):
@@ -37,11 +44,18 @@ func GenerateTiles() -> void:
 					else:
 						GameManager.AnswerAmount -= Answers[x].Amount
 						for pair_id in Answers[x].HalfSet:
-							TempSet = []
+							TempSet = {}
 							for id in Answers[x].HalfSet[pair_id]:
-								TempSet.append(id)
-							TempSet.append(x)
+								TempSet[id] = {
+									"Row": 0,
+									"Column": 0
+								}
+							TempSet[x] = {
+								"Row": 0,
+								"Column": 0
+							}
 							CurrentAnswer += 1
+							
 							Sets[CurrentAnswer] = TempSet
 							
 						Answers.erase(x)
@@ -49,7 +63,12 @@ func GenerateTiles() -> void:
 						break
 						
 			else: 
-				get_answers(TileList[randi() % TileList.size()])
+				if TileList.size() == 0:
+					pass
+					#have to come up with some way of still having stuff
+					#3x4 is too big for 3 set
+				else:
+					get_answers(TileList[randi() % TileList.size()])
 				
 			CurrentSpace += 1
 			
@@ -68,7 +87,7 @@ func get_answers(new_tile: String) -> void:
 		for i in range(3):
 			if x[i] == new_tile[i]:
 				AnswerTile += x[i]
-			else: 
+			else:  
 				match [x[i], new_tile[i]]:
 					["0", "1"]:
 						AnswerTile += "2"

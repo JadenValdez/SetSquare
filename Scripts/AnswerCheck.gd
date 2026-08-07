@@ -73,8 +73,10 @@ func CheckSets() -> void:
 					break
 					
 			if !(tiles_found >= 3):
+				AnswerCreator.CreateAnswerTabRoundEnd(set_id)
 				pass
 				#this set was not found
 				#show visual that shows it where it was on the board
+				#need to save sets with column and row or something
 	
 	LevelManager.StartNewRound()

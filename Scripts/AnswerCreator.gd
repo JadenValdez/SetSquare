@@ -14,3 +14,11 @@ func CreateAnswerTab() -> void:
 	instance.position = Vector2(576 + 80 * CurrentAnswerAmount, 608)
 	add_child(instance)
 	CurrentAnswerAmount += 1
+
+func CreateAnswerTabRoundEnd(set_id: int) -> void:
+	SignalBus.move_remaining_answer_tabs.emit()
+	var instance = ANSWER_TAB.instantiate()
+	instance.selected_tiles = GameManager.Sets[set_id]
+	instance.position = Vector2(576 + 80 * CurrentAnswerAmount, 608)
+	add_child(instance)
+	CurrentAnswerAmount += 1
