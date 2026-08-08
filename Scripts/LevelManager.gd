@@ -14,14 +14,19 @@ func StartGame():
 	
 func StartNewLevel() -> void:
 	RemainingLevelAnswers = GameManager.LEVELS[GameManager.CurrentLevel].Answers.duplicate(true)
+	
 	GameManager.BoardRows = GameManager.LEVELS[GameManager.CurrentLevel].Rows
 	GameManager.BoardColumns = GameManager.LEVELS[GameManager.CurrentLevel].Columns
+	GameManager.List = GameManager.LEVELS[GameManager.CurrentLevel].List
 	GameManager.CurrentRound = 0
 	
 	
 func StartNewRound() -> void:
+	
 	SignalBus.remove_answer_tabs.emit()
 	SignalBus.delete_all_tiles.emit()
+	
+	#should be a cutscene for next round
 	if RemainingLevelAnswers.is_empty():
 		GameManager.CurrentLevel += 1
 		if GameManager.CurrentLevel >= 6:

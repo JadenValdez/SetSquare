@@ -51,6 +51,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_2_pressed() -> void:
+	SignalBus.clear_selected_tiles.emit()
 	AnswerCheck.CheckSets()
 
 func _update_score() -> void:

@@ -16,6 +16,7 @@ var tile_column: int
 func _ready() -> void:
 	SignalBus.clear_selected_tiles.connect(_clear_selected_tiles)
 	SignalBus.delete_all_tiles.connect(_delete_all_tiles)
+	SignalBus.select_tile.connect(_select_tile)
 	
 	color_rect.modulate = tile_shade
 	
@@ -66,3 +67,7 @@ func _clear_selected_tiles() -> void:
 
 func _delete_all_tiles() -> void:
 	queue_free()
+
+func _select_tile(id: String) -> void:
+	if tile_id == id:
+		line_2d.show()

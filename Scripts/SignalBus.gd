@@ -7,6 +7,7 @@ signal update_score
 
 signal clear_selected_tiles
 signal delete_all_tiles
+signal select_tile
 
 signal move_remaining_answer_tabs
 signal remove_answer_tabs

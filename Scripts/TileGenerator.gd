@@ -37,11 +37,13 @@ func GenerateTiles() -> void:
 	for i in range(GameManager.BoardRows):
 		for j in range(GameManager.BoardColumns):
 			#start looking for answers once enough spaces have been filled out
+			print(GameManager.AnswerAmount)
 			if TotalSpaces - CurrentSpace <= GameManager.AnswerAmount && GameManager.AnswerAmount != 0:
 				for x in Answers.keys():
 					if Answers[x].Amount > GameManager.AnswerAmount:
 						pass
 					else:
+						
 						GameManager.AnswerAmount -= Answers[x].Amount
 						for pair_id in Answers[x].HalfSet:
 							TempSet = {}

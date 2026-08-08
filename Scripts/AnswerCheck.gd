@@ -74,9 +74,15 @@ func CheckSets() -> void:
 					
 			if !(tiles_found >= 3):
 				AnswerCreator.CreateAnswerTabRoundEnd(set_id)
+				for tile_id in GameManager.Sets[set_id]:
+					SignalBus.select_tile.emit(tile_id)
+				await get_tree().create_timer(1).timeout
+				SignalBus.clear_selected_tiles.emit()
+				await get_tree().create_timer(0.1).timeout
 				pass
 				#this set was not found
 				#show visual that shows it where it was on the board
 				#need to save sets with column and row or something
 	
 	LevelManager.StartNewRound()
+	
